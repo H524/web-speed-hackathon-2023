@@ -46,7 +46,7 @@ export default defineConfig(async () => {
         videos,
       }),
       // visualizer(),
-      gzipPlugin(),
+      gzipPlugin({fileName: '.gz'}),
     ],
   };
 });

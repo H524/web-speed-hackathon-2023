@@ -1,14 +1,17 @@
-import type { FC } from 'react';
+import { FC, Suspense } from 'react';
+import { lazyImport } from '../../../utils/load_lazy';
 
-import { SignInModal } from '../../modal/SignInModal';
-import { SignUpModal } from '../../modal/SignUpModal';
+const { SignInModal } = lazyImport(() => import("../../modal/SignInModal"), 'SignInModal');
+const { SignUpModal } = lazyImport(() => import("../../modal/SignUpModal"), 'SignUpModal');
 import { Providers } from '../Providers';
 import { Routes } from '../Routes';
 
 export const App: FC = () => (
-  <Providers>
-    <Routes />
-    <SignInModal />
-    <SignUpModal />
-  </Providers>
+  <Suspense fallback={<>Loading...</>}>
+    <Providers>
+      <Routes />
+      <SignInModal />
+      <SignUpModal />
+    </Providers>
+  </Suspense>
 );

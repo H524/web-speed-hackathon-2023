@@ -5,7 +5,11 @@ export function lazyImport<
   U extends string,
 >(factory: () => Promise<T>, name: U): T {
   return Object.create({
-    [name]: React.lazy(() => factory().then((module) => ({ default: module[name] }))),
+    [name]: React.lazy(
+      () => factory()
+        .then((module) => ({ default: module[name] }))
+        .catch()
+    ),
   });
 }
 
