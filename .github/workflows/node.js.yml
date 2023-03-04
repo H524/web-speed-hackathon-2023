@@ -1,0 +1,31 @@
+name: web-speed-hackathon-2023 CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: superfly/flyctl-actions/setup-flyctl@master
+    - name: Use Node.js ${{ matrix.node-version }}
+    - uses: pnpm/action-setup@v2.2.2
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+        cache: 'pnpm'
+    - run: pnpm --frozen-lockfile
+    - run: pnpm build
+    - run: flyctl deploy --remote-only
