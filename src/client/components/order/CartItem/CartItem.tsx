@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import * as currencyFormatter from 'currency-formatter';
-import type { ChangeEventHandler, FC } from 'react';
+import { ChangeEventHandler, FC, Suspense } from 'react';
 
+import { lazyImport } from '../../../utils/load_lazy';
 import type { ShoppingCartItemFragmentResponse } from '../../../graphql/fragments';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
 import { normalizeCartItemCount } from '../../../utils/normalize_cart_item';
@@ -10,7 +11,7 @@ import { AspectRatio } from '../../foundation/AspectRatio';
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
 import { Image } from '../../foundation/Image';
 import { OutlineButton } from '../../foundation/OutlineButton';
-import { ProductOfferLabel } from '../../product/ProductOfferLabel';
+const { ProductOfferLabel } = lazyImport(() => import("../../product/ProductOfferLabel"), 'ProductOfferLabel');
 
 import * as styles from './CartItem.styles';
 
@@ -55,7 +56,9 @@ export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
                       </AspectRatio>
                       {activeOffer !== undefined && (
                         <div className={styles.offerLabel()}>
-                          <ProductOfferLabel size="base">タイムセール中</ProductOfferLabel>
+                          <Suspense fallback={<>Loading...</>}>
+                            <ProductOfferLabel size="base">タイムセール中</ProductOfferLabel>
+                          </Suspense>
                         </div>
                       )}
                     </div>

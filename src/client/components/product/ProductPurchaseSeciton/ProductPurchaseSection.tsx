@@ -1,11 +1,14 @@
-import type { FC } from 'react';
+import { FC, Suspense } from 'react';
 import { memo } from 'react';
 
+import { lazyImport } from '../../../utils/load_lazy';
+
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
-import { Icon } from '../../foundation/Icon';
-import { OutlineButton } from '../../foundation/OutlineButton';
-import { PrimaryAnchor } from '../../foundation/PrimaryAnchor';
-import { PrimaryButton } from '../../foundation/PrimaryButton';
+
+const { Icon } = lazyImport(() => import("../../foundation/OutlineButton"), 'Icon');
+const { OutlineButton } = lazyImport(() => import("../../foundation/OutlineButton"), 'OutlineButton');
+const { PrimaryAnchor } = lazyImport(() => import("../../foundation/PrimaryAnchor"), 'PrimaryAnchor');
+const { PrimaryButton } = lazyImport(() => import("../../foundation/PrimaryButton"), 'PrimaryButton');
 
 import * as styles from './ProductPurchaseSection.styles';
 
@@ -28,9 +31,11 @@ export const ProductPurchaseSection: FC<Props> = memo(
         <div className={styles.container()}>
           <div className={styles.signInWrapper()}>
             <span className={styles.signIn()}>購入にはログインが必要です</span>
-            <PrimaryButton onClick={() => onOpenSignInModal()} size="sm">
-              ログイン
-            </PrimaryButton>
+            <Suspense fallback={<>Loading...</>}>
+              <PrimaryButton onClick={() => onOpenSignInModal()} size="sm">
+                ログイン
+              </PrimaryButton>              
+            </Suspense>
           </div>
         </div>
       );
@@ -39,9 +44,11 @@ export const ProductPurchaseSection: FC<Props> = memo(
     if (amountInCart === 0) {
       return (
         <div className={styles.container()}>
-          <PrimaryButton onClick={() => onUpdateCartItem(product.id, 1)} size="sm">
-            カートに追加
-          </PrimaryButton>
+          <Suspense fallback={<>Loading...</>}>
+            <PrimaryButton onClick={() => onUpdateCartItem(product.id, 1)} size="sm">
+              カートに追加
+            </PrimaryButton>
+          </Suspense>
         </div>
       );
     }
@@ -50,17 +57,23 @@ export const ProductPurchaseSection: FC<Props> = memo(
       <div className={styles.container()}>
         <p className={styles.amount()}>
           <span className={styles.checkIcon()}>
-            <Icon color="#3BA175" height={18} type="FaCheckCircle" width={18} />
+            <Suspense fallback={<>Loading...</>}>
+              <Icon color="#3BA175" height={18} type="FaCheckCircle" width={18} />
+            </Suspense>
           </span>
           <span>{amountInCart}個 カートに追加済み</span>
         </p>
         <div className={styles.actionButtonList()}>
-          <PrimaryAnchor href="/order" size="base">
-            購入手続きへ
-          </PrimaryAnchor>
-          <OutlineButton onClick={() => onUpdateCartItem(product.id, amountInCart + 1)} size="lg">
-            カートに追加
-          </OutlineButton>
+          <Suspense fallback={<>Loading...</>}>
+            <PrimaryAnchor href="/order" size="base">
+              購入手続きへ
+            </PrimaryAnchor>
+          </Suspense>
+          <Suspense fallback={<>Loading...</>}>
+            <OutlineButton onClick={() => onUpdateCartItem(product.id, amountInCart + 1)} size="lg">
+              カートに追加
+            </OutlineButton>
+          </Suspense>
         </div>
       </div>
     );

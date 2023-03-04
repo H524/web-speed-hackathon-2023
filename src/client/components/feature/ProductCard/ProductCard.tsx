@@ -1,12 +1,14 @@
 import * as currencyFormatter from 'currency-formatter';
-import type { FC } from 'react';
+import { FC, Suspense } from 'react';
+
+import { lazyImport } from '../../../utils/load_lazy';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
 import { Anchor } from '../../foundation/Anchor';
 import { AspectRatio } from '../../foundation/AspectRatio';
 import { Image } from '../../foundation/Image';
-import { ProductOfferLabel } from '../../product/ProductOfferLabel';
+const { ProductOfferLabel } = lazyImport(() => import("../../product/ProductOfferLabel"), 'ProductOfferLabel');
 
 import * as styles from './ProductCard.styles';
 
@@ -36,7 +38,9 @@ export const ProductCard: FC<Props> = ({ product }) => {
         </div>
         {activeOffer !== undefined && (
           <div className={styles.label()}>
-            <ProductOfferLabel size="base">タイムセール中</ProductOfferLabel>
+            <Suspense fallback={<>Loading...</>}>
+              <ProductOfferLabel size="base">タイムセール中</ProductOfferLabel>
+            </Suspense>
           </div>
         )}
       </div>
