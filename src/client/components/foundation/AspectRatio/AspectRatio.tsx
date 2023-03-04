@@ -34,7 +34,7 @@ export const AspectRatio: FC<Props> = ({ children, ratioHeight, ratioWidth }) =>
   }, [ratioHeight, ratioWidth]);
 
   return (
-    <div ref={containerRef} className={styles.container({ clientHeight })}>
+    <div ref={containerRef} className={styles.container({ clientHeight, ratioHeight, ratioWidth })}>
       {children}
     </div>
   );
