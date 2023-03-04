@@ -1,3 +1,6 @@
+# fly.toml file generated for h524-web-speed-hackathon-20230304 on 2023-03-04T10:34:30+09:00
+
+app = "h524-web-speed-hackathon-20230304"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
