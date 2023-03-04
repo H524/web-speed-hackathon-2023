@@ -1,5 +1,3 @@
-import CanvasKitInit from 'canvaskit-wasm';
-import CanvasKitWasmUrl from 'canvaskit-wasm/bin/canvaskit.wasm?url';
 import classNames from 'classnames';
 import { memo, useEffect, useState } from 'react';
 import type { FC } from 'react';
