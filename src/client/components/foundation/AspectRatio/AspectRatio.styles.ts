@@ -1,12 +1,11 @@
 import { css } from '@emotion/css';
 
 export const container = ({
-  clientHeight, ratioHeight, ratioWidth
+  ratioHeight, ratioWidth
 }: {
-  clientHeight: number | undefined,
   ratioHeight: number | undefined,
   ratioWidth: number | undefined }) => css`
-  height: ${clientHeight ?? 0}px;  
+  height: auto;  
   aspect-ratio: ${ratioWidth} / ${ratioHeight};
   position: relative;
   width: 100%;
