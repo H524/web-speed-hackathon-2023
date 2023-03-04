@@ -1,7 +1,8 @@
-import type { FC, ReactNode } from 'react';
+import { FC, ReactNode, Suspense } from 'react';
+import { lazyImport } from '../../../utils/load_lazy';
 
-import { Footer } from '../../navigators/Footer/Footer';
-import { Header } from '../../navigators/Header/Header';
+const { Footer } = lazyImport(() => import("../../navigators/Footer/Footer"), 'Footer');
+const { Header } = lazyImport(() => import("../../navigators/Header/Header"), 'Header');
 
 import * as styles from './Layout.styles';
 
@@ -11,8 +12,10 @@ type Props = {
 
 export const Layout: FC<Props> = ({ children }) => (
   <>
-    <Header />
-    <main className={styles.container()}>{children}</main>
-    <Footer />
+    <Suspense fallback={<>Loading...</>}>
+      <Header />
+      <main className={styles.container()}>{children}</main>
+      <Footer />
+    </Suspense>
   </>
 );
