@@ -33,8 +33,8 @@ export default defineConfig(async () => {
         output: {
           experimentalMinChunkSize: 40960,
           manualChunks: {
-            recoil: ['recoil'],
-            '@js-temporal/polyfill': ['@js-temporal/polyfill'],
+            // recoil: ['recoil'],
+            // '@js-temporal/polyfill': ['@js-temporal/polyfill'],
             // '@apollo/client': ['@apollo/client'],
             // '@apollo/server': ['@apollo/server'],
           }
