@@ -9,6 +9,8 @@ export const container = () => css`
 `;
 
 export const logo = () => css`
+  width: 205px;
+  height: 32px
   display: flex;
 `;
 

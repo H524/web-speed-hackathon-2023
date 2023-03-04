@@ -26,3 +26,8 @@ export const item = () => css`
   color: #222222;
   font-size: 14px;
 `;
+
+export const logo = () => css`
+  width: 205px;
+  height: 32px
+`;
