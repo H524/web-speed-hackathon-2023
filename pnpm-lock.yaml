@@ -65,6 +65,7 @@ specifiers:
   react-router-dom: 6.4.5
   recoil: 0.7.6
   reflect-metadata: 0.1.13
+  rollup-plugin-gzip: 3.1.0
   rollup-plugin-visualizer: 5.9.0
   setimmediate: 1.0.5
   sqlite3: 5.1.4
@@ -155,6 +156,7 @@ devDependencies:
   prettier: 2.8.0
   prettier-plugin-packagejson: 2.4.3_prettier@2.8.0
   prettier-plugin-sort-json: 1.0.0_prettier@2.8.0
+  rollup-plugin-gzip: 3.1.0
   rollup-plugin-visualizer: 5.9.0
   stylelint: 15.1.0
   stylelint-config-recommended: 10.0.1_stylelint@15.1.0
@@ -5649,6 +5651,13 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+
+  /rollup-plugin-gzip/3.1.0:
+    resolution: {integrity: sha512-PFS9s6/w6dCra6/Z8PGD+ug3aaaqKLDCbr5y1Ek71Wd4rQSmMnOqCIIMgwbYxZ9A/gjP3pCN6rA4pAG47jxF0w==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      rollup: '>=2.0.0'
+    dev: true
 
   /rollup-plugin-visualizer/5.9.0:
     resolution: {integrity: sha512-bbDOv47+Bw4C/cgs0czZqfm8L82xOZssk4ayZjG40y9zbXclNk7YikrZTDao6p7+HDiGxrN0b65SgZiVm9k1Cg==}

@@ -6,6 +6,7 @@ import { ViteEjsPlugin } from 'vite-plugin-ejs';
 import topLevelAwait from 'vite-plugin-top-level-await';
 import wasm from 'vite-plugin-wasm';
 import { visualizer } from 'rollup-plugin-visualizer';
+import gzipPlugin from 'rollup-plugin-gzip'
 
 import { getFileList } from './tools/get_file_list';
 
@@ -44,7 +45,8 @@ export default defineConfig(async () => {
         title: '買えるオーガニック',
         videos,
       }),
-      visualizer(),
+      // visualizer(),
+      gzipPlugin(),
     ],
   };
 });
