@@ -15,14 +15,14 @@ type Props = {
 
 export const MediaItem: FC<Props> = ({ file }) => {
   const [imageSrc, setImageSrc] = useState<string>();
-  const mediaType = getMediaType(file.filename);
+  const mediaType = getMediaType(file.filename.replace(".jpg", ".webp"));
 
   useEffect(() => {
     if (mediaType === 'image') {
-      return setImageSrc(file.filename);
+      return setImageSrc(file.filename.replace(".jpg", ".webp"));
     }
-    loadThumbnail(file.filename).then((url) => setImageSrc(url));
-  }, [file.filename, mediaType]);
+    loadThumbnail(file.filename.replace(".jpg", ".webp")).then((url) => setImageSrc(url));
+  }, [file.filename.replace(".jpg", ".webp"), mediaType]);
 
   if (imageSrc === undefined) {
     return null;

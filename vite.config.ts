@@ -44,7 +44,7 @@ export default defineConfig(async () => {
         title: '買えるオーガニック',
         videos,
       }),
-      // visualizer(),
+      visualizer(),
     ],
   };
 });
