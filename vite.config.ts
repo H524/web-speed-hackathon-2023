@@ -25,13 +25,13 @@ export default defineConfig(async () => {
 
   return {
     build: {
-      assetsInlineLimit: 20480,
+      // assetsInlineLimit: 20480,
       cssCodeSplit: true,
       cssTarget: 'es6',
       minify: true,
       rollupOptions: {
         output: {
-          experimentalMinChunkSize: 40960,
+          // experimentalMinChunkSize: 40960,
           manualChunks: {
             recoil: ['recoil'],
             '@js-temporal/polyfill': ['@js-temporal/polyfill'],
