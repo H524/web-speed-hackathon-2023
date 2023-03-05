@@ -1,4 +1,4 @@
-import path from 'node:path';
+// import path from 'node:path';
 
 import react from '@vitejs/plugin-react';
 import { defineConfig, splitVendorChunkPlugin } from 'vite';
@@ -8,20 +8,20 @@ import wasm from 'vite-plugin-wasm';
 import { visualizer } from 'rollup-plugin-visualizer';
 import gzipPlugin from 'rollup-plugin-gzip'
 
-import { getFileList } from './tools/get_file_list';
+// import { getFileList } from './tools/get_file_list';
 
-const publicDir = path.resolve(__dirname, './public');
-const getPublicFileList = async (targetPath: string) => {
-  const filePaths = await getFileList(targetPath);
-  const publicFiles = filePaths
-    .map((filePath) => path.relative(publicDir, filePath))
-    .map((filePath) => path.join('/', filePath));
+// const publicDir = path.resolve(__dirname, './public');
+// const getPublicFileList = async (targetPath: string) => {
+//   const filePaths = await getFileList(targetPath);
+//   const publicFiles = filePaths
+//     .map((filePath) => path.relative(publicDir, filePath))
+//     .map((filePath) => path.join('/', filePath));
 
-  return publicFiles;
-};
+//   return publicFiles;
+// };
 
 export default defineConfig(async () => {
-  const videos = await getPublicFileList(path.resolve(publicDir, 'videos'));
+  // const videos = await getPublicFileList(path.resolve(publicDir, 'videos'));
 
   return {
     build: {
@@ -49,7 +49,7 @@ export default defineConfig(async () => {
       ViteEjsPlugin({
         module: '/src/client/index.tsx',
         title: '買えるオーガニック',
-        videos,
+        // videos,
       }),
       splitVendorChunkPlugin(),
       gzipPlugin({fileName: '.gz'}),
