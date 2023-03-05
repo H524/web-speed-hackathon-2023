@@ -29,7 +29,7 @@ export const Footer: FC = () => {
             </ul>
             <NavLink to="/">
               <div className={styles.logo()}>
-                <Image src="/icons/logo.svg" height={32} width={205} />
+                <Image src="/icons/logo.svg" height={32} width={205} loading="lazy"/>
               </div>
             </NavLink>
           </footer>
