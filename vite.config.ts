@@ -32,12 +32,12 @@ export default defineConfig(async () => {
       rollupOptions: {
         output: {
           experimentalMinChunkSize: 40960,
-          manualChunks: {
-            recoil: ['recoil'],
-            '@js-temporal/polyfill': ['@js-temporal/polyfill'],
-            '@apollo/client': ['@apollo/client'],
-            // '@apollo/server': ['@apollo/server'],
-          }
+          // manualChunks: {
+          //   recoil: ['recoil'],
+          //   '@js-temporal/polyfill': ['@js-temporal/polyfill'],
+          //   '@apollo/client': ['@apollo/client'],
+          //   // '@apollo/server': ['@apollo/server'],
+          // }
         },
       },
       target: 'chrome87',
@@ -51,7 +51,7 @@ export default defineConfig(async () => {
         title: '買えるオーガニック',
         // videos,
       }),
-      splitVendorChunkPlugin(),
+      // splitVendorChunkPlugin(),
       gzipPlugin({fileName: '.gz'}),
       // visualizer(),
     ],
