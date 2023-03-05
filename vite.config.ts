@@ -35,7 +35,7 @@ export default defineConfig(async () => {
           manualChunks: {
             recoil: ['recoil'],
             '@js-temporal/polyfill': ['@js-temporal/polyfill'],
-            // '@apollo/client': ['@apollo/client'],
+            '@apollo/client': ['@apollo/client'],
             // '@apollo/server': ['@apollo/server'],
           }
         },
