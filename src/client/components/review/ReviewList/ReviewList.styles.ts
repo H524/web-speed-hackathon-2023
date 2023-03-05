@@ -10,6 +10,8 @@ export const item = () => css`
   display: flex;
   gap: 8px;
   padding: 4px 0;
+  content-visibility: auto;
+  contain-intrinsic-size: 88px;
 `;
 
 export const avaterImage = () => css`

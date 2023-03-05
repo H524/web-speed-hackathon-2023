@@ -5,6 +5,8 @@ export const inner = () => css`
   overflow: hidden;
   position: relative;
   width: 224px;
+  content-visibility: auto;
+  contain-intrinsic-size: 126px;
 `;
 
 export const label = () => css`
